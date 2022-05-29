@@ -1,0 +1,65 @@
+@import url(./font.css);
+@import url(./theme.css);
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	background-color: var(--backgroundColor);
+	color: var(--fontColor);
+}
+
+.head {
+	display: block;
+	margin-top: 20px;
+}
+
+.head .userInput {
+	height: 21px;
+	width: 80vw;
+	margin-left: 10px;
+
+    word-wrap: break-word;
+	outline: none;
+	border: none;
+	background: none;
+	color: var(--fontColor);
+
+	font-size: 1em;
+
+}
+
+.user {
+	position: relative;
+	z-index: 10;
+	background-color: var(--userBackgroundColor);
+	padding: 0 5px;
+}
+
+.folder {
+	position: relative;
+	background-color: var(--folderBackgroundColor);
+	padding: 0 5px 0 20px;
+}
+
+.user:after,
+.folder:after {
+	content: "";
+	position: absolute;
+	width: 0;
+	height: 0;
+
+	border-top: 10.5px solid transparent;
+	border-bottom: 10.5px solid transparent;
+
+	border-left: 10.5px solid var(--userBackgroundColor);
+	top: 50%;
+	right: -10.5px;
+	transform: translateY(-50%);
+}
+
+.folder:after {
+	border-left: 10.5px solid var(--folderBackgroundColor);
+}
