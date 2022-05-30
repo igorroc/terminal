@@ -1,22 +1,50 @@
 import insertUi from "./insertUI.js"
+import { runCommand, banner } from "./runCommand.js"
+import { saveCursor, sleep } from "../utils/functions.js"
 
-let currentFolder = "~"
-let currentUser = "visitor"
+let currentSettings = {
+	currentFolder: "~",
+	currentUser: "guest",
+}
 
 const root = document.getElementById("root")
-let currentHead = document.querySelectorAll(".head")
-insertUi(root, currentUser, currentFolder)
 
-document.addEventListener("click", () => {
-	currentHead = document.querySelectorAll(".head")
-	currentHead[currentHead.length - 1].querySelector(".userInput").focus()
+await sleep(6000)
+root.innerHTML += `<p class="command">Terminal Rocha</p>`
+root.innerHTML += `<p class="command" style="animation-delay: 100ms;">Copyright © 2022 ilRocha. All rights reserved.</p>`
+banner(root)
+insertUi(root, currentSettings)
+
+document.addEventListener("click", (ev) => {
+	document.querySelector("#cursor ~ input").focus()
 })
 
-let lastHeadInput = currentHead[currentHead.length - 1].querySelector(".userInput")
+document.addEventListener("keydown", async (ev) => {
+	if (ev.key == "Enter") {
+		let lastHead = document.querySelector(".head:last-child")
+		let lastUserInput = lastHead.querySelector(".userInput")
+		let command = lastUserInput.querySelector("input").value
 
-lastHeadInput.addEventListener("keyup", (ev) => {
-    if(ev.key == "Enter") {
+		if (command == "") {
+			saveCursor()
+			lastUserInput.innerHTML = ""
+			insertUi(root, currentSettings)
+			document.querySelector("#cursor ~ input").focus()
+			return
+		}
 
-    }
+		let argument = command.split(" ")
+		command = argument.shift()
+
+		saveCursor()
+
+		await runCommand(root, command, argument, currentSettings)
+
+		lastUserInput.innerHTML = `<b>${command}</b> ${argument.join(" ")}`
+
+		insertUi(root, currentSettings)
+		await document.querySelector("#cursor ~ input").focus()
+	}
 })
 
+document.querySelector("#cursor ~ input").focus()

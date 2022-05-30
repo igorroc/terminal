@@ -4,12 +4,28 @@
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="shortcut icon" href="./assets/terminal.ico" type="image/x-icon">
+		<link
+			rel="shortcut icon"
+			href="./assets/terminal.ico"
+			type="image/x-icon"
+		/>
 		<title>🚀 Terminal</title>
 		<link rel="stylesheet" href="./css/terminal.css" />
+		<script src="./js/handleType.js"></script>
 	</head>
 	<body>
-		<div id="root"></div>
+		<div id="loading">
+			<div id="loadModal">
+				<div class="bar" style="--n: 0"></div>
+				<div class="bar" style="--n: 1"></div>
+				<div class="bar" style="--n: 2"></div>
+			</div>
+		</div>
+
+		<div id="root">
+			<span id="cursor"></span>
+		</div>
+
 		<script src="./js/script.js" type="module"></script>
 	</body>
 </html>

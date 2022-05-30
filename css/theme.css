@@ -1,7 +1,9 @@
 :root {
 	--backgroundColor: #282828;
 	--fontColor: #fff;
+	--fontErrorColor: #e74856;
 
+	--logoBackgroundColor: #542a8f;
 	--userBackgroundColor: #458588;
 	--folderBackgroundColor: #7b981a;
 }

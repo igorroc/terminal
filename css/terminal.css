@@ -1,5 +1,7 @@
 @import url(./font.css);
 @import url(./theme.css);
+@import url(./headCommand.css);
+@import url(./loader.css);
 
 * {
 	margin: 0;
@@ -9,57 +11,66 @@
 body {
 	background-color: var(--backgroundColor);
 	color: var(--fontColor);
+	overflow-x: hidden;
 }
 
-.head {
-	display: block;
-	margin-top: 20px;
+a {
+	color: var(--folderBackgroundColor);
+	padding: 1px 5px;
+}
+a:hover {
+	background: var(--folderBackgroundColor);
+	color: white;
 }
 
-.head .userInput {
-	height: 21px;
-	width: 80vw;
-	margin-left: 10px;
-
-    word-wrap: break-word;
-	outline: none;
-	border: none;
-	background: none;
-	color: var(--fontColor);
-
-	font-size: 1em;
-
-}
-
-.user {
-	position: relative;
-	z-index: 10;
-	background-color: var(--userBackgroundColor);
-	padding: 0 5px;
-}
-
-.folder {
-	position: relative;
-	background-color: var(--folderBackgroundColor);
-	padding: 0 5px 0 20px;
-}
-
-.user:after,
-.folder:after {
-	content: "";
+#userInputBig {
 	position: absolute;
-	width: 0;
-	height: 0;
-
-	border-top: 10.5px solid transparent;
-	border-bottom: 10.5px solid transparent;
-
-	border-left: 10.5px solid var(--userBackgroundColor);
-	top: 50%;
-	right: -10.5px;
-	transform: translateY(-50%);
+	left: -1000px;
 }
 
-.folder:after {
-	border-left: 10.5px solid var(--folderBackgroundColor);
+#cursor {
+	position: absolute;
+	z-index: 1000;
+	width: 0.8em;
+	height: 21px;
+	/* background-color: white; */
+	animation: blinking 700ms infinite;
+}
+
+.command {
+	overflow: hidden;
+	white-space: nowrap;
+	width: 0;
+	animation: typing 1s forwards;
+	animation-iteration-count: 1;
+	-webkit-animation-fill-mode: forwards; /* Safari 4.0 - 8.0 */
+	animation-fill-mode: forwards;
+}
+
+.command.error {
+	color: var(--fontErrorColor);
+}
+
+b.command {
+	margin: 20px 0px 5px 20px;
+	display: block;
+}
+
+p.command {
+	margin: 5px 40px;
+}
+
+@keyframes blinking {
+	to {
+		opacity: 0;
+	}
+}
+
+@keyframes typing {
+	from {
+		width: 0;
+	}
+	to {
+		width: 100%;
+	}
 }

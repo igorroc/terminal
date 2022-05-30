@@ -1,0 +1,73 @@
+.head {
+	display: block;
+	margin-top: 20px;
+}
+
+.head .userInput {
+	height: 21px;
+	width: 80vw;
+	margin-left: 10px;
+
+	word-wrap: break-word;
+	outline: none;
+	border: none;
+	background: none;
+	color: var(--fontColor);
+
+	font-size: 1em;
+}
+
+.logo {
+	position: relative;
+	z-index: 10;
+	background-color: var(--logoBackgroundColor);
+	padding: 0 5px;
+}
+.user {
+	position: relative;
+	z-index: 5;
+	background-color: var(--userBackgroundColor);
+	padding: 0 5px 0 20px;
+}
+
+.folder {
+	position: relative;
+	background-color: var(--folderBackgroundColor);
+	padding: 0 5px 0 20px;
+}
+
+.logo:after,
+.user:after,
+.folder:after {
+	content: "";
+	position: absolute;
+	width: 0;
+	height: 0;
+
+	border-top: 10.5px solid transparent;
+	border-bottom: 10.5px solid transparent;
+
+	border-left: 10.5px solid var(--userBackgroundColor);
+	top: 50%;
+	right: -10.5px;
+	transform: translateY(-50%);
+}
+
+.logo:after {
+	border-left: 10.5px solid var(--logoBackgroundColor);
+}
+
+.folder:after {
+	border-left: 10.5px solid var(--folderBackgroundColor);
+}
+
+.userInput input {
+	position: absolute;
+	background: none;
+	border: none;
+	outline: none;
+	font-size: 1em;
+	height: 21px;
+	color: var(--fontColor);
+	margin-left: 10px;
+}
